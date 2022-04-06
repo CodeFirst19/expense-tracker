@@ -1,5 +1,7 @@
+import 'package:expense_planner/widgets/adaptive_flat_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'dart:io';
 
 class NewTransaction extends StatefulWidget {
 
@@ -63,11 +65,13 @@ class _NewTransactionState extends State<NewTransaction> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            // const CupertinoTextField(placeholder: 'Title',),
             TextField(
               decoration: const InputDecoration(labelText: 'Title'),
               controller: _titleController,
               onSubmitted: (_) => _submitData(),
             ),
+            // const CupertinoTextField(placeholder: 'Amount',),
             TextField(
               decoration: const InputDecoration(labelText: 'Amount'),
               controller: _amountController,
@@ -85,11 +89,7 @@ class _NewTransactionState extends State<NewTransaction> {
                             : 'Chosen Date: ${DateFormat.yMd().format(_selectedDate!)}'
                     ),
                   ),
-                  TextButton(
-                      onPressed: _presentDatePicker,
-                      child: const Text('Choose Date', style: TextStyle(fontWeight: FontWeight.bold),),
-                      style: TextButton.styleFrom(primary: Theme.of(context).primaryColor),
-                  ),
+                 AdaptiveFlatButton(text: 'Choose Date', presentDatePickerHandler: _presentDatePicker)
                 ],
               ),
             ),
